@@ -1,0 +1,3 @@
+[submodule "docs-to-schema/data/documentation"]
+	path = docs-to-schema/data/documentation
+	url = git@github.com:mastodon/documentation.git

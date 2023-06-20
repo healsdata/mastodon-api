@@ -2,14 +2,24 @@
     "name": "healsdata/mastodon-api",
     "type": "library",
     "license": "MIT",
-    "require": {},
     "require-dev": {
         "pds/skeleton": "^1.0",
-        "phpunit/phpunit": "^10.2"
+        "phpunit/phpunit": "^10.2",
+        "league/climate": "^3.8"
     },
     "autoload": {
         "psr-4": {
             "Healsdata\\MastodonApi\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Healsdata\\MastodonApi\\Test\\": "tests/",
+            "Healsdata\\MastodonApi\\DocsToSchema\\": "docs-to-schema/src/",
+            "Healsdata\\MastodonApi\\DocsToSchema\\Test\\": "docs-to-schema/tests/"
+        }
+    },
+    "require": {
+        "php-di/php-di": "^7.0"
     }
 }
