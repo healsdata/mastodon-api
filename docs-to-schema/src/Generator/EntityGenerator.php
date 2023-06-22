@@ -21,19 +21,18 @@ class EntityGenerator implements GeneratorInterface
     public function run(string $documentationRepo, string $targetDirectory): void
     {
         $docRepoFullPath = $documentationRepo . "/content/en/entities";
-        $targetDirFullPath = $targetDirectory . "/Entity";
 
         foreach (new DirectoryIterator($docRepoFullPath) as $fileInfo) {
             if ($fileInfo->isDot()) {
                 continue;
             }
 
-            $subNamespace = "";
+            $subNamespace = "Entity";
             $entityName = $fileInfo->getBasename(".md");
 
             if (stristr($entityName, "_") !== false) {
                 $pieces = explode("_", $entityName);
-                $subNamespace = $pieces[0];
+                $subNamespace .= "\\" . $pieces[0];
                 $entityName = $pieces[1];
             }
 
@@ -63,7 +62,7 @@ EOF;
                 $entityBuilder->properties[] = $propertyBuilder;
             }
 
-            $entityFilePath = $entityBuilder->getFilePath($targetDirFullPath);
+            $entityFilePath = $entityBuilder->getFilePath($targetDirectory);
             $entityDirName = dirname($entityFilePath);
 
             if (!is_dir($entityDirName)) {

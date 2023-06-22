@@ -20,6 +20,7 @@ class SchemaGenerator implements GeneratorInterface
     {
         $this->cli = $cli;
         $this->generators[] = new EntityGenerator($cli);
+        $this->generators[] = new MethodGenerator($cli);
     }
 
     public function run(string $documentationRepo, string $targetDirectory): void
